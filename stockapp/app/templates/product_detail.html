@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}URUN DETAYI{% endblock title %}
+{% block content %}
+
+<h4 style='text-decoration:underline;'>Details</h4>
+    <div class="card-body">
+      <h4 class="card-title">{{product.name}}</h4>
+      <h6 class="card-title">{{product.brand}}</h6>
+      <h6 class="card-title">{{product.category}}</h6>
+      <h6 class="card-title">{{product.stock}} tane urun var</h6>
+    </div>
+
+  
+  <div class="card-footer">
+      <small> Created:{{product.created_at}} </small>
+      <br>
+      <small> Updated:{{product.updated_at}} </small>
+      
+      
+
+  </div>
+
+{% endblock content %}

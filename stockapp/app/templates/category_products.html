@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}{{ category.name }} Ürünleri{% endblock title %}
+{% block content %}
+<h2>{{ category.name }} Kategorisindeki Ürünler</h2>
+<ul>
+    {% for product in products %}
+        <li>{{ product.name }}</li>
+    {% empty %}
+        <li>Bu kategoride ürün yok.</li>
+    {% endfor %}
+</ul>
+<a class='text-dark' href="{% url 'category_list' %}">← Kategorilere Dön</a>
+{% endblock content %}

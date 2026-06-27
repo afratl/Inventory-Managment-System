@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}ALIMLAR{% endblock title %}
+{% block content %}
+
+<!-- Arama ve Filtreleme Formu -->
+<form method="GET" action="{% url 'purchases_list' %}">
+  <input type="text" name="q" placeholder="Firma Ara" value="{{ request.GET.q }}">
+  <select name="firm">
+      <option value="">Firma Seç</option>
+
+      {% for firm in firms %}
+      <option value="{{ firm.id }}" {% if request.GET.firm == firm.id|stringformat:"s" %}selected{% endif %}>
+          {{ firm.name }}
+
+      </option>
+
+      {% endfor %}
+
+  </select>
+
+  <button type="submit">Ara</button>
+  <a href="{% url 'purchases_list' %}" class="btn btn-info">Temizle</a>
+</form>
+
+{% for purchase in purchases %}
+<div class="card text-left">
+
+  <div class="card-body">
+    <h4 class="card-title">{{purchase.product.name}}</h4>
+    <h6 class="card-title">{{purchase.price}}-->{{purchase.quantity}} adet alindi</h6>
+
+ 
+  </div>
+
+  
+ {% empty %}
+    <li>Hiçbir kayıt bulunamadı.</li>
+  {% endfor %}
+{% endblock content %}

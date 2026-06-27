@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}MARKALAR{% endblock title %}
+{% block content %}
+
+<!-- Arama Formu -->
+<form method="GET" action="{% url 'brand_list' %}">
+  <input type="text" name="q" placeholder="Marka Ara" value="{{ request.GET.q }}">
+  <button type="submit">Ara</button>
+</form>
+
+
+
+<div class='container row '>
+{% for brand in brands %}   
+<div class="card text-left col-md-3">
+    <img class="card-img-top" src="{{ brand.image.url }}" alt="">
+  <div class="card-body">
+    <h4 class="card-title">{{ brand.name }}</h4>
+  </div>
+</div>
+{% endfor %}
+
+</div>
+
+{% endblock content %}
